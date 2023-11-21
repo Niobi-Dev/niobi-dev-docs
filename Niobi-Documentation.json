@@ -1,0 +1,572 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Niobi Application API",
+        "description": "Niobi List Api",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://users.niobi.co",
+            "description": "Live API Server"
+        }
+    ],
+    "paths": {
+        "/api/integration/get-token": {
+            "post": {
+                "tags": [
+                    "payment"
+                ],
+                "summary": "need to get bearer token first to use niobi payment api",
+                "description": "need to get bearer token first to use niobi payment api",
+                "operationId": "getToken",
+                "requestBody": {
+                    "description": "Pass payment data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "client_id",
+                                    "secret_key"
+                                ],
+                                "properties": {
+                                    "client_id": {
+                                        "type": "string",
+                                        "format": "client_id",
+                                        "example": "string"
+                                    },
+                                    "secret_key": {
+                                        "type": "string",
+                                        "format": "secret_key",
+                                        "example": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": "true"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Credentials verified successfully."
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "token": {
+                                                    "type": "string",
+                                                    "example": "123|abc*************************"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    },
+                    "501": {
+                        "description": "Not Implemented"
+                    },
+                    "503": {
+                        "description": "Service Unavailable"
+                    }
+                }
+            }
+        },
+        "/api/niobi-payment": {
+            "post": {
+                "tags": [
+                    "payment"
+                ],
+                "summary": "Niobi unified payment",
+                "description": "Niobi unified payment",
+                "operationId": "NiobiPayment",
+                "requestBody": {
+                    "description": "<h2>Supported Banks</h2><br><table><thead><th>Name</th><th>Code</th></thead><tbody><tr><td>Kenya Commercial Bank</td><td>01</td></tr><tr><td>Standard Chartered</td><td>02</td></tr><tr><td>Absa Bank Kenya</td><td>03</td></tr><tr><td>Ncba Bank Kenya</td><td>07</td></tr><tr><td>Prime Bank</td><td>10</td></tr><tr><td>Cooperative Bank</td><td>11</td></tr><tr><td>National Bank of Kenya</td><td>12</td></tr><tr><td>Citibank N.A Kenya</td><td>16</td></tr><tr><td>Middle East Bank Kenya</td><td>18</td></tr><tr><td>Bank of Africa Kenya</td><td>19</td></tr><tr><td>Credit Bank Limited</td><td>25</td></tr><tr><td>CFC Stanbic Kenya</td><td>31</td></tr><tr><td>Paramount Bank</td><td>50</td></tr><tr><td>Jamii Bora Bank</td><td>51</td></tr><tr><td>Guaranty Trust Bank</td><td>53</td></tr><tr><td>Guardian Bank</td><td>55</td></tr><tr><td>I&M Bank </td><td>57</td></tr><tr><td>Diamond Trust Bank</td><td>63</td></tr><tr><td>Sidian Bank</td><td>66</td></tr><tr><td>Equity Bank Kenya</td><td>68</td></tr><tr><td>Family Bank Limited</td><td>70</td></tr><tr><td>Gulf African Bank</td><td>72</td></tr><tr><td>First Community Bank</td><td>74</td></tr><tr><td>Kenya Women's Finance Trust</td><td>78</td></tr></tbody></table><br><br>",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "amount",
+                                    "currency",
+                                    "payment_reference",
+                                    "payment_method_type",
+                                    "first_name",
+                                    "last_name",
+                                    "mobile",
+                                    "email",
+                                    "country",
+                                    "city",
+                                    "postal_code",
+                                    "line1"
+                                ],
+                                "properties": {
+                                    "amount": {
+                                        "description": "This is the Amount of money you wish to transfer. This amount shall always be less than the total value in your Balance",
+                                        "type": "integer",
+                                        "format": "amount",
+                                        "example": 10
+                                    },
+                                    "currency": {
+                                        "description": "This is the currency of the payouts you are making. At the moment, Niobi Payments supports KES transactions only",
+                                        "type": "string",
+                                        "format": "currency",
+                                        "example": "KES"
+                                    },
+                                    "payment_reference": {
+                                        "description": "This is the account number associated with Niobi, that holds the value from which a pyaout is being made",
+                                        "type": "string",
+                                        "format": "payment_reference",
+                                        "example": "123456789"
+                                    },
+                                    "first_name": {
+                                        "description": "This is the first name of the Payee who is being paid out",
+                                        "type": "string",
+                                        "format": "first_name",
+                                        "example": "John"
+                                    },
+                                    "last_name": {
+                                        "description": "This is the last name of the Payee who is being paid out",
+                                        "type": "string",
+                                        "format": "last_name",
+                                        "example": "Doe"
+                                    },
+                                    "mobile": {
+                                        "description": "This is the mobile number of the Payee who is being paid out. Use the correct formatting as described in the example",
+                                        "type": "string",
+                                        "format": "mobile",
+                                        "example": "254123456789"
+                                    },
+                                    "email": {
+                                        "description": "This is the email  of the Payee who is being paid out",
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "john@doe.com"
+                                    },
+                                    "country": {
+                                        "description": "This is the country of the Payee who is being paid out",
+                                        "type": "string",
+                                        "format": "country",
+                                        "example": "KE"
+                                    },
+                                    "city": {
+                                        "description": "This is the city of the Payee who is being paid out",
+                                        "type": "string",
+                                        "format": "city",
+                                        "example": "Nairobi"
+                                    },
+                                    "postal_code": {
+                                        "description": "This is the postal code of the Payee who is being paid out",
+                                        "type": "string",
+                                        "format": "postal_code",
+                                        "example": "001001"
+                                    },
+                                    "line1": {
+                                        "description": "This is the street address of the Payee who is being paid out",
+                                        "type": "string",
+                                        "format": "line1",
+                                        "example": "abc, xyz"
+                                    },
+                                    "client_callback_url": {
+                                        "description": "You can provide call back URL to get payment confirmation response.",
+                                        "type": "string",
+                                        "format": "client_callback_url",
+                                        "example": "https://your-domain.com/niobi/result"
+                                    },
+                                    "payment_method_type": {
+                                        "description": "This is the preferred payment method you want to use to payout the money and what makes the Niobi Payment API really unique as we support all popular mobile money and bank payments",
+                                        "type": "string",
+                                        "enum": [
+                                            "send money",
+                                            "till number",
+                                            "pay bill",
+                                            "pesalink"
+                                        ],
+                                        "example": "send money"
+                                    },
+                                    "sendmoney": {
+                                        "description": "Using M-Pesa Send Money method needs a recipient's phone number",
+                                        "type": "array",
+                                        "items": {
+                                            "required": [
+                                                "phone_number"
+                                            ],
+                                            "properties": {
+                                                "phone_number": {
+                                                    "description": "Enter the recipient's mobile number. Be sure to use the right fomatting",
+                                                    "type": "string",
+                                                    "format": "phone_number",
+                                                    "example": "254123456789"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "paybill": {
+                                        "description": "Using M-Pesa PayBill method needs A Paybill Number and Account Number",
+                                        "type": "array",
+                                        "items": {
+                                            "required": [
+                                                "paybill_number",
+                                                "account_number"
+                                            ],
+                                            "properties": {
+                                                "paybill_number": {
+                                                    "description": "paybill number",
+                                                    "type": "string",
+                                                    "format": "paybill_number",
+                                                    "example": "123456"
+                                                },
+                                                "account_number": {
+                                                    "description": "Niobi account number",
+                                                    "type": "string",
+                                                    "format": "account_number",
+                                                    "example": "123456789"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "tillnumber": {
+                                        "description": "Using M-Pesa till number method needs the recipient's Till Number",
+                                        "type": "array",
+                                        "items": {
+                                            "required": [
+                                                "till_number"
+                                            ],
+                                            "properties": {
+                                                "till_number": {
+                                                    "description": "Till number",
+                                                    "type": "string",
+                                                    "format": "till_number",
+                                                    "example": "123456"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "pesalink": {
+                                        "description": "Niobi Payments also allows payouts via Bank Transfers using Pesalink. This transfer needs the following information",
+                                        "type": "array",
+                                        "items": {
+                                            "required": [
+                                                "bank_name",
+                                                "bank_code",
+                                                "branch_name",
+                                                "account_name"
+                                            ],
+                                            "properties": {
+                                                "bank_name": {
+                                                    "description": "your respective bank name",
+                                                    "type": "string",
+                                                    "format": "bank_name",
+                                                    "example": "ABC"
+                                                },
+                                                "bank_code": {
+                                                    "description": "your respective bank code",
+                                                    "type": "string",
+                                                    "format": "bank_code",
+                                                    "example": "00"
+                                                },
+                                                "branch_name": {
+                                                    "description": "your respective branch name",
+                                                    "type": "string",
+                                                    "format": "branch_name",
+                                                    "example": "ABC"
+                                                },
+                                                "account_name": {
+                                                    "description": "your respective account name",
+                                                    "type": "string",
+                                                    "format": "account_name",
+                                                    "example": "ABC"
+                                                },
+                                                "account_number": {
+                                                    "description": "This is the account number associated with the recipient that will receive the payout",
+                                                    "type": "string",
+                                                    "format": "account_number",
+                                                    "example": "123456789"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok.",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Request Created.",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "202": {
+                        "description": "Request Accepted.",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    },
+                    "501": {
+                        "description": "Not Implemented"
+                    },
+                    "503": {
+                        "description": "Service Unavailable"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/get-account-balance": {
+            "get": {
+                "tags": [
+                    "payment"
+                ],
+                "summary": "get-account-balance",
+                "description": "get-account-balance",
+                "operationId": "getAccountBalance",
+                "responses": {
+                    "200": {
+                        "description": "Ok.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": "true"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Balance fetched successfully."
+                                        },
+                                        "data": {
+                                            "type": "integer",
+                                            "example": 123
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    },
+                    "501": {
+                        "description": "Not Implemented"
+                    },
+                    "503": {
+                        "description": "Service Unavailable"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/stk-deposit": {
+            "post": {
+                "tags": [
+                    "payment"
+                ],
+                "summary": "Niobi STK Deposit",
+                "description": "Niobi STK Deposit",
+                "operationId": "niobiSTKDeposit",
+                "requestBody": {
+                    "description": "Deposit STK Payment.",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "amount",
+                                    "mobile"
+                                ],
+                                "properties": {
+                                    "amount": {
+                                        "type": "integer",
+                                        "format": "amount",
+                                        "example": "integer"
+                                    },
+                                    "mobile": {
+                                        "description": "This is the mobile number of the Payee who is being paid out. Use the correct formatting as described in the example",
+                                        "type": "string",
+                                        "format": "mobile",
+                                        "example": "254123456789"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Ok.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": "true"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Verification token was sent to your mobile number. Kindly verify to proceed payment"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "MerchantRequestID": {
+                                                    "type": "string",
+                                                    "example": "1234-123456789-1"
+                                                },
+                                                "CheckoutRequestID": {
+                                                    "type": "string",
+                                                    "example": "ab_XY_*******************"
+                                                },
+                                                "ResponseCode": {
+                                                    "type": "string",
+                                                    "example": "0"
+                                                },
+                                                "ResponseDescription": {
+                                                    "type": "string",
+                                                    "example": "Success. Request accepted for processing"
+                                                },
+                                                "CustomerMessage": {
+                                                    "type": "string",
+                                                    "example": "Success. Request accepted for processing"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    },
+                    "501": {
+                        "description": "Not Implemented"
+                    },
+                    "503": {
+                        "description": "Service Unavailable"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+    "tags": [
+        {
+            "name": "Niobi",
+            "description": "API Endpoints of Niobi"
+        }
+    ],
+    "components": {
+        "securitySchemes": {
+            "apiAuth": {
+                "type": "apiKey",
+                "description": "Enter token in format (Bearer <token>)",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    }
+}
+}
