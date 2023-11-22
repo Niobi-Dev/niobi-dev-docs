@@ -1,6 +1,6 @@
 ---
-title: Introduction
-description: 'Welcome to the home of your new documentation'
+title: Introduction to Niobi
+description: 'Niobi Payments is a single API that lets you manage payouts to a variety of payment channels from your Niobi Balance.'
 ---
 
 <img
@@ -14,58 +14,64 @@ description: 'Welcome to the home of your new documentation'
   alt="Hero Dark"
 />
 
-## Setting up
+## Introduction
 
-The first step to world-class documentation is setting up your editing environnments.
+Welcome to the Niobi Payments API documentation. This guide provides comprehensive documentation for integrating with the Niobi Payments API, allowing your users to make payouts through various payment channels to individuals and businesses.
+The Niobi Payments API enables you to manage wallets, top-up funds, and initiate payouts seamlessly.
 
-<CardGroup cols={2}>
-  <Card
-    title="Edit Your Docs"
-    icon="pen-to-square"
-    href="https://mintlify.com/docs/quickstart"
-  >
-    Get your docs set up locally for easy development
-  </Card>
-  <Card
-    title="Preview Changes"
-    icon="image"
-    href="https://mintlify.com/docs/development"
-  >
-    Preview your changes before you push to make sure they're perfect
-  </Card>
-</CardGroup>
+## API Overview
 
-## Make it yours
+The Niobi Payments API offers a range of functionalities to facilitate payments and fund management. The key components of the API are:
 
-Update your docs to your brand and add valuable content for the best user conversion.
+- Wallets: Create and manage wallets to store funds for payouts. Retrieve wallet details and monitor available balances. (Documentation Coming soon)
+- Top-up Funds: Initiate top-up requests to add funds to wallets. Track the status of top-up requests to ensure successful fund transfers. (Documentation Coming soon)
+- Initiate Payouts: Facilitate payouts from wallets to recipients. Initiate payouts through various payment channels, such as bank transfers or digital wallets.
 
-<CardGroup cols={2}>
-  <Card
-    title="Customize Style"
-    icon="palette"
-    href="https://mintlify.com/docs/settings/global"
-  >
-    Customize your docs to your company's colors and brands
-  </Card>
-  <Card
-    title="Reference APIs"
-    icon="code"
-    href="https://mintlify.com/docs/api-playground/openapi"
-  >
-    Automatically generate endpoints from an OpenAPI spec
-  </Card>
-  <Card
-    title="Add Components"
-    icon="screwdriver-wrench"
-    href="https://mintlify.com/docs/components/accordion"
-  >
-    Build interactive features and designs to guide your users
-  </Card>
-  <Card
-    title="Get Inspiration"
-    icon="stars"
-    href="https://mintlify.com/showcase"
-  >
-    Check out our showcase of our favorite documentation
-  </Card>
-</CardGroup>
+## Getting Started
+
+To begin using the Niobi Payments API, please follow these steps:
+
+Obtain API Key: You can set up an account with Niobi to obtain API key required for authentication.
+
+Authenticate API Requests: Include your API key in the request headers for every API call to authenticate your requests. The API key can be obtained by signing up for a developer account with Niobi.
+
+## Setting up a Niobi Account
+
+To access the Niobi Payments API, you need to create an account on our platform, beta.niobi.co, and then add a developer account in the settings section. Follow the steps below to get started:
+
+1. Open your web browser and visit beta.niobi.co.
+2. Click on the "Sign Up" button to create a new account. Fill in the required information, such as your name, email address, and password. Accept the terms and conditions, and then click on "Sign Up" to proceed. We ask that only managers/owners of the business set up their business account first and then invite other team members to the platform later.
+3. Once you have created your account, you need to invite the developer who will be working on the integration. To do this, navigate to the “Workspace” section on the left sidebar.
+4. Within the Workspace tab, you will see an option to manage your “Team”. Navigate to it and click the “Invite Users” button.
+5. Once you click it, you will see the option of adding emails and roles of the team members you want to invite.
+6. Please add the email of the team member that needs to be invited and set their role as “Developer”.
+7. The invited team member will now receive an invitation to sign up.
+8. The developer should sign up on beta.niobi.co using the link provided in their email.
+9. In the developer account Workspace, you will find an option to generate API keys. Click on the "API Keys" button. The API key generation process will provide you with a unique API key. This key serves as your authentication mechanism when making API requests. Make sure to securely store your API key and avoid sharing it publicly.
+10. Begin by creating your first integration by clicking the “Create Integration” button. We recommend creating one integration for each of the projects you are using the APIs with.
+11. Within the Integration settings, the developer can generate the required credentials for the integration. These credentials typically consist of a Client ID and Secret Key. Make sure to save these credentials securely.
+12. You are now ready to integrate the Niobi Payments API into your application. Include the API key in the request headers as shown in the authentication section of this documentation.
+
+## API Reference
+
+The API reference section provides detailed information on each endpoint and its functionalities. Use the provided documentation to understand the request/response structure, required parameters, and potential error codes.
+
+## Support
+
+If you encounter any issues, have questions, or need assistance, please reach out to our support team. We are here to help you with any queries related to the Niobi Payments API integration.
+
+<Note>
+> You can reach out to our support team at support@niobi.co
+</Note>
+
+## Support
+
+If you encounter any issues, have questions, or need assistance, please reach out to our support team. We are here to help you with any queries related to the Niobi Payments API integration.
+
+> You can reach out to our support team at support@niobi.co
+
+## Conclusion
+
+The Niobi Payments API offers a robust and reliable solution for managing payouts and funds across various payment channels. By integrating with our API, you can enhance your application's capabilities and provide your users with a seamless payment experience.
+
+Let's get started with the Niobi Payments API integration!

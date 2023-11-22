@@ -62,11 +62,12 @@
       "pages": ["api-reference/introduction"]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "Payment Endpoints",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "api-reference/payment/get-account-balance",
+        "api-reference/payment/niobi-stk-deposit",
+        "api-reference/payment/niobi-unified-payment",
+        "api-reference/payment/need-to-get-bearer-token-first-to-use-niobi-payment-api"
       ]
     }
   ],
