@@ -136,6 +136,12 @@
                                         "format": "amount",
                                         "example": 10
                                     },
+                                    "customer_identifier": {
+                                        "description": "This is the Customer Identifier number for sub-wallet.",
+                                        "type": "integer",
+                                        "format": "integer",
+                                        "example": 1234
+                                    },
                                     "currency": {
                                         "description": "This is the currency of the payouts you are making. At the moment, Niobi Payments supports KES transactions only",
                                         "type": "string",
@@ -379,14 +385,14 @@
                 ]
             }
         },
-        "/api/get-account-balance": {
+        "/api/wallet/get-balance": {
             "get": {
                 "tags": [
-                    "payment"
+                    "wallet"
                 ],
-                "summary": "get-account-balance",
-                "description": "get-account-balance",
-                "operationId": "getAccountBalance",
+                "summary": "get-balance",
+                "description": "get-balance",
+                "operationId": "get-balance",
                 "responses": {
                     "200": {
                         "description": "Ok.",
@@ -400,11 +406,13 @@
                                         },
                                         "message": {
                                             "type": "string",
-                                            "example": "Balance fetched successfully."
+                                            "example": "Payment link balance fetched successfully."
                                         },
                                         "data": {
-                                            "type": "integer",
-                                            "example": 123
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
                                         }
                                     },
                                     "type": "object"
@@ -470,6 +478,568 @@
                                         "type": "string",
                                         "format": "mobile",
                                         "example": "254123456789"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Ok.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": "true"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Verification token was sent to your mobile number. Kindly verify to proceed payment"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "MerchantRequestID": {
+                                                    "type": "string",
+                                                    "example": "1234-123456789-1"
+                                                },
+                                                "CheckoutRequestID": {
+                                                    "type": "string",
+                                                    "example": "ab_XY_*******************"
+                                                },
+                                                "ResponseCode": {
+                                                    "type": "string",
+                                                    "example": "0"
+                                                },
+                                                "ResponseDescription": {
+                                                    "type": "string",
+                                                    "example": "Success. Request accepted for processing"
+                                                },
+                                                "CustomerMessage": {
+                                                    "type": "string",
+                                                    "example": "Success. Request accepted for processing"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    },
+                    "501": {
+                        "description": "Not Implemented"
+                    },
+                    "503": {
+                        "description": "Service Unavailable"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/payment-link-api/get-transaction-status/{id}": {
+            "get": {
+                "tags": [
+                    "payment-link"
+                ],
+                "summary": "get-transaction-status",
+                "description": "get-transaction-status",
+                "operationId": "paymentLinkAPIGetTransactionStatus",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": "true"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Payment link status fetched successfully."
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    },
+                    "501": {
+                        "description": "Not Implemented"
+                    },
+                    "503": {
+                        "description": "Service Unavailable"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/payment-link/list": {
+            "get": {
+                "tags": [
+                    "payment-link"
+                ],
+                "summary": "payment-link-list",
+                "description": "payment-link-list",
+                "operationId": "paymentLinkList",
+                "responses": {
+                    "200": {
+                        "description": "Ok.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": "true"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Payment link list fetched successfully."
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    },
+                    "501": {
+                        "description": "Not Implemented"
+                    },
+                    "503": {
+                        "description": "Service Unavailable"
+                    }
+                }
+            }
+        },
+        "/api/payment-link-api/get-by-id/{id}": {
+            "get": {
+                "tags": [
+                    "payment-link"
+                ],
+                "summary": "get-by-id",
+                "description": "get-by-id",
+                "operationId": "paymentLinkAPIGetById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": "true"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Payment link fetched successfully."
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    },
+                    "501": {
+                        "description": "Not Implemented"
+                    },
+                    "503": {
+                        "description": "Service Unavailable"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/payment-link-api/get-by-short-code/{short-code}": {
+            "get": {
+                "tags": [
+                    "payment-link"
+                ],
+                "summary": "get-by-short-code",
+                "description": "get-by-short-code",
+                "operationId": "paymentLinkAPIGetByShortCode",
+                "parameters": [
+                    {
+                        "name": "short-code",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": "true"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Payment link fetched successfully."
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    },
+                    "501": {
+                        "description": "Not Implemented"
+                    },
+                    "503": {
+                        "description": "Service Unavailable"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/payment-link/create": {
+            "post": {
+                "tags": [
+                    "payment-link"
+                ],
+                "summary": "Niobi create payment-link",
+                "description": "Niobi create payment-link",
+                "operationId": "niobiCreatePaymentLink",
+                "requestBody": {
+                    "description": "Create payment link.",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "business_name"
+                                ],
+                                "properties": {
+                                    "business_name": {
+                                        "type": "string",
+                                        "format": "business_name",
+                                        "example": "string"
+                                    },
+                                    "item_name": {
+                                        "type": "string",
+                                        "format": "item_name",
+                                        "example": "string"
+                                    },
+                                    "callback_url": {
+                                        "type": "string",
+                                        "format": "callback_url",
+                                        "example": "string"
+                                    },
+                                    "redirection_url": {
+                                        "type": "string",
+                                        "format": "redirection_url",
+                                        "example": "string"
+                                    },
+                                    "logo": {
+                                        "type": "string",
+                                        "format": "logo",
+                                        "example": "This is brand logo. Use the base64 format to upload a file of maximum 2MB size."
+                                    },
+                                    "amount": {
+                                        "type": "integer",
+                                        "format": "amount",
+                                        "example": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Ok.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": "true"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Verification token was sent to your mobile number. Kindly verify to proceed payment"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "MerchantRequestID": {
+                                                    "type": "string",
+                                                    "example": "1234-123456789-1"
+                                                },
+                                                "CheckoutRequestID": {
+                                                    "type": "string",
+                                                    "example": "ab_XY_*******************"
+                                                },
+                                                "ResponseCode": {
+                                                    "type": "string",
+                                                    "example": "0"
+                                                },
+                                                "ResponseDescription": {
+                                                    "type": "string",
+                                                    "example": "Success. Request accepted for processing"
+                                                },
+                                                "CustomerMessage": {
+                                                    "type": "string",
+                                                    "example": "Success. Request accepted for processing"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    },
+                    "501": {
+                        "description": "Not Implemented"
+                    },
+                    "503": {
+                        "description": "Service Unavailable"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/payment-link/pay": {
+            "post": {
+                "tags": [
+                    "payment-link"
+                ],
+                "summary": "Niobi Payments through payment-link",
+                "description": "Niobi Payments through payment-link",
+                "operationId": "niobiPaymentsThroughPaymentLink",
+                "requestBody": {
+                    "description": "Create Payments throught payment-link.",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "entity_id",
+                                    "first_name",
+                                    "last_name",
+                                    "mobile",
+                                    "email",
+                                    "country",
+                                    "address",
+                                    "short_code"
+                                ],
+                                "properties": {
+                                    "entity_id": {
+                                        "type": "integer",
+                                        "format": "entity_id",
+                                        "example": "integer"
+                                    },
+                                    "short_code": {
+                                        "type": "string",
+                                        "format": "short_code",
+                                        "example": "string"
+                                    },
+                                    "first_name": {
+                                        "type": "string",
+                                        "format": "first_name",
+                                        "example": "string"
+                                    },
+                                    "last_name": {
+                                        "type": "string",
+                                        "format": "last_name",
+                                        "example": "string"
+                                    },
+                                    "mobile": {
+                                        "description": "This is the mobile number of the Payee who is being paid out. Use the correct formatting as described in the example",
+                                        "type": "string",
+                                        "format": "mobile",
+                                        "example": "254123456789"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "string"
+                                    },
+                                    "country": {
+                                        "type": "string",
+                                        "format": "country",
+                                        "example": "string"
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "format": "address",
+                                        "example": "string"
+                                    },
+                                    "amount": {
+                                        "type": "integer",
+                                        "format": "amount",
+                                        "example": "integer"
                                     }
                                 },
                                 "type": "object"

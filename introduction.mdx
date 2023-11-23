@@ -39,18 +39,45 @@ Authenticate API Requests: Include your API key in the request headers for every
 
 To access the Niobi Payments API, you need to create an account on our platform, beta.niobi.co, and then add a developer account in the settings section. Follow the steps below to get started:
 
-1. Open your web browser and visit beta.niobi.co.
-2. Click on the "Sign Up" button to create a new account. Fill in the required information, such as your name, email address, and password. Accept the terms and conditions, and then click on "Sign Up" to proceed. We ask that only managers/owners of the business set up their business account first and then invite other team members to the platform later.
-3. Once you have created your account, you need to invite the developer who will be working on the integration. To do this, navigate to the “Workspace” section on the left sidebar.
-4. Within the Workspace tab, you will see an option to manage your “Team”. Navigate to it and click the “Invite Users” button.
-5. Once you click it, you will see the option of adding emails and roles of the team members you want to invite.
-6. Please add the email of the team member that needs to be invited and set their role as “Developer”.
-7. The invited team member will now receive an invitation to sign up.
-8. The developer should sign up on beta.niobi.co using the link provided in their email.
-9. In the developer account Workspace, you will find an option to generate API keys. Click on the "API Keys" button. The API key generation process will provide you with a unique API key. This key serves as your authentication mechanism when making API requests. Make sure to securely store your API key and avoid sharing it publicly.
-10. Begin by creating your first integration by clicking the “Create Integration” button. We recommend creating one integration for each of the projects you are using the APIs with.
-11. Within the Integration settings, the developer can generate the required credentials for the integration. These credentials typically consist of a Client ID and Secret Key. Make sure to save these credentials securely.
-12. You are now ready to integrate the Niobi Payments API into your application. Include the API key in the request headers as shown in the authentication section of this documentation.
+<Steps>
+ <Step title="Selecting environment">
+  Open your web browser and visit https://dev.niobi.co/register if you want to use the sandbox environment or
+   https://app.niobi.co/register for production environment.
+ </Step>
+ <Step title="Registration">
+   Click on the "Sign Up" button to create a new account. Fill in the required information, such as your name, email address, and password. Accept the terms and conditions, and then click on "Sign Up" to proceed. We ask that only managers/owners of the business set up their business account first and
+    then invite other team members to the platform later.
+ </Step>
+ <Step title="Inviting a user">
+  1. Once you have created your account, you need to invite the developer who will be working on the integration. 
+  To do this, navigate to the “Workspace” section on the left sidebar.
+
+  2. Within the Workspace tab, you will see an option to manage your “Team”.
+   Navigate to it and click the “Invite Users” button.
+
+  3. Once you click it, you will see the option of adding emails and roles of the team members you want to invite.
+
+  4. Please add the email of the team member that needs to be invited and set their role as “Developer”.
+
+  5. The invited team member will now receive an invitation to sign up.
+ </Step>
+ <Step title="Registering developer account">
+  1. The invited team member will now receive an invitation to sign up.
+  2.  The developer should sign up on beta.niobi.co using the link provided in their email.
+ </Step>
+ <Step title="Generating API Keys">
+   In the developer account Workspace, you will find an option to generate API keys. Click on the "API Keys" button. The API key generation process will provide you with a unique API key. This key serves as your authentication mechanism when making API requests. Make sure to securely store your API key and avoid sharing it publicly.
+ </Step>
+ <Step title="Creating a new integration">
+ Begin by creating your first integration by clicking the “Create Integration” button. We recommend creating one integration for each of the projects you are using the APIs with.
+ </Step>
+ <Step title="Creating credentials">
+  Within the Integration settings, the developer can generate the required credentials for the integration. These credentials typically consist of a Client ID and Secret Key. Make sure to save these credentials securely.
+ </Step>
+ <Step title="Using the credentials">
+ You are now ready to integrate the Niobi Payments API into your application. Include the API key in the request headers as shown in the authentication section of this documentation.
+ </Step>
+</Steps>
 
 ## API Reference
 
@@ -61,14 +88,8 @@ The API reference section provides detailed information on each endpoint and its
 If you encounter any issues, have questions, or need assistance, please reach out to our support team. We are here to help you with any queries related to the Niobi Payments API integration.
 
 <Note>
-> You can reach out to our support team at support@niobi.co
+You can reach out to our support team at support@niobi.co
 </Note>
-
-## Support
-
-If you encounter any issues, have questions, or need assistance, please reach out to our support team. We are here to help you with any queries related to the Niobi Payments API integration.
-
-> You can reach out to our support team at support@niobi.co
 
 ## Conclusion
 

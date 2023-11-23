@@ -18,7 +18,7 @@
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "url": "mailto:support@niobi.co"
     }
   ],
   "topbarCtaButton": {
@@ -43,10 +43,26 @@
     {
       "group": "Payment Endpoints",
       "pages": [
-        "api-reference/payment/get-account-balance",
         "api-reference/payment/niobi-stk-deposit",
         "api-reference/payment/niobi-unified-payment",
         "api-reference/payment/need-to-get-bearer-token-first-to-use-niobi-payment-api"
+      ]
+    },
+    {
+      "group": "Payment-link Endpoints",
+      "pages": [
+        "api-reference/payment-link/get-by-id",
+        "api-reference/payment-link/get-by-short-code",
+        "api-reference/payment-link/get-transaction-status",
+        "api-reference/payment-link/niobi-create-payment-link",
+        "api-reference/payment-link/niobi-payments-through-payment-link",
+        "api-reference/payment-link/payment-link-list"
+      ]
+    },
+    {
+      "group": "Wallets Endpoints",
+      "pages": [
+        "api-reference/wallet/get-balance"
       ]
     }
   ],
