@@ -2,7 +2,7 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "Niobi",
   "logo": {
-    "dark": "/logo/dark.svg",
+    "dark": "/logo/niobi_logo_white.png",
     "light": "/logo/light.svg"
   },
   "favicon": "/favicon.svg",
@@ -67,9 +67,9 @@
     }
   ],
   "footerSocials": {
-    "twitter": "https://twitter.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "twitter": "https://twitter.com/_Niobi",
+    "instagram": "https://www.instagram.com/niobi_/",
+    "linkedin": "https://www.linkedin.com/company/niobi/"
   },
   "openapi":["/Niobi-Documentation.json"]
 }
