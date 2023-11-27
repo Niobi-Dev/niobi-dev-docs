@@ -43,31 +43,21 @@
     {
       "group": "Authentication",
       "pages": [
-        "api-reference/payment/niobi-stk-deposit",
         "api-reference/payment/niobi-unified-payment",
-        "api-reference/payment/need-to-get-bearer-token-first-to-use-niobi-payment-api"
+        "api-reference/payment/get-token"
       ]
     },
     {
       "group": "Accept Payments",
       "pages": [
         "api-reference/payment-link/payment-link-list",
-        "api-reference/payment-link/get-by-id",
-        "api-reference/payment-link/get-by-short-code",
-        "api-reference/payment-link/get-transaction-status",
-        "api-reference/payment-link/niobi-create-payment-link",
-        "api-reference/payment-link/niobi-payments-through-payment-link"
+        "api-reference/payment/niobi-stk-deposit"
       ]
     },
     {
       "group": "Make Payments",
       "pages": [
-        "api-reference/payment-link/payment-link-list",
-        "api-reference/payment-link/get-by-id",
-        "api-reference/payment-link/get-by-short-code",
-        "api-reference/payment-link/get-transaction-status",
-        "api-reference/payment-link/niobi-create-payment-link",
-        "api-reference/payment-link/niobi-payments-through-payment-link"
+        "api-reference/payment/niobi-unified-payment"
       ]
     },
     {
