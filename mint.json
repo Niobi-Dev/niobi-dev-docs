@@ -5,7 +5,7 @@
     "dark": "/logo/logo-white.png",
     "light": "/logo/niobi-logo-green.png"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/logo/niobi-logo-o.png",
   "colors": {
     "primary": "#0D9373",
     "light": "#07C983",
