@@ -22,8 +22,8 @@
     }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "name": "Login to App",
+    "url": "https://app.niobi.com"
   },
   "tabs": [
     {
