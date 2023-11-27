@@ -43,7 +43,6 @@
     {
       "group": "Authentication",
       "pages": [
-        "api-reference/payment/niobi-unified-payment",
         "api-reference/payment/get-token"
       ]
     },
