@@ -49,14 +49,31 @@
     {
       "group": "Accept Payments",
       "pages": [
-        "api-reference/payment-link/payment-link-list",
-        "api-reference/payment/niobi-stk-deposit"
+          "Kenya",
+          {
+            "group":"Kenya",
+            "pages":["api-reference/payment-link/payment-link-list","api-reference/payment/niobi-stk-deposit"]
+          },
+          "Rwanda",
+          {
+            "group":"Rwanda",
+            "pages":["api-reference/payment-link/payment-link-list","api-reference/payment/niobi-stk-deposit"]
+          }
       ]
     },
     {
       "group": "Make Payments",
       "pages": [
-        "api-reference/payment/niobi-unified-payment"
+        "Kenya",
+        {
+          "group":"Kenya",
+          "pages":["api-reference/payment/niobi-unified-payment"]
+        },
+        "Rwanda",
+        {
+          "group":"Rwanda",
+          "pages":["api-reference/payment/niobi-unified-payment"]
+        }
       ]
     },
     {
