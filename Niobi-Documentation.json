@@ -7,7 +7,7 @@
     },
     "servers": [
         {
-            "url": "https://users.niobi.co",
+            "url": "https://dev.users.niobi.co",
             "description": "Live API Server"
         }
     ],
