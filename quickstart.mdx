@@ -1,23 +1,28 @@
 ---
-title: 'Getting Started'
-description: 'This section outlines the initial steps needed to begin using the Niobi Payments API, including account setup and API authentication.'
+title: Getting Started
+description: This section outlines the initial steps needed to begin using the Niobi Payments API, including account setup and API authentication.
 ---
 ## Setup your Environment
 
-Niobi provides both the sandbox and live Environments.
+Niobi provides both a sandbox and live environments to successfully integrate with our API. This will allow your organization to work with our APIs without any compliance or security risks. 
+
+Details of Niobi's sandbox and live environments are as below
 
 
 <AccordionGroup>
   <Accordion icon="github" title="Sandbox">
-    During the development process, we created a sandbox envrironment where you can easily interact our APIs without making real transactions.
-    To get started, follow the signup instructions using this link
-    [sandbox](https://dev.users.niobi.co).
+    During the development process, you will use a sandbox environment where you can easily interact with our APIs without making simulated / mocked transactions.
+    1. To get started, follow the signup instructions using this link for the [sandbox account](https://dev.users.niobi.co).
+    2. The base URL for our sandbox APIs is (https://dev.users.niobi.co).
+    3. The rest of the steps, including creating an account, verifying it and fetching API credentials are all similar to our live environment.
   </Accordion>
   <Accordion icon="rectangle-terminal" title="Live">
-    After testing with the sandbox and ready for production.Follow these steps. 1. Follow the signup instructions using this link
+    After testing with the sandbox and ready for production.Follow these steps. 
+    1. Follow the signup instructions using this link
     [Live](https://app.niobi.co).
     2. Change the API endpoints from 
     `https://dev.users.niobi.co` to  ```https://users.niobi.co```
+    3. Make sure your live accound is verified by our compliance team to be ready to accept and send payments. 
   </Accordion>
 </AccordionGroup>
 
@@ -25,9 +30,9 @@ Niobi provides both the sandbox and live Environments.
 
 To begin using the Niobi Payments API, please follow these steps:
 
-Obtain API Key: You can set up an account with Niobi to obtain API key required for authentication.
+**Obtain API Key:** You can set up an account with Niobi to obtain API key required for authentication. (see steps below)
 
-Authenticate API Requests: Include your API key in the request headers for every API call to authenticate your requests. The API key can be obtained by signing up for a developer account with Niobi.
+**Authenticate API Requests:** Include your API key in the request headers for every API call to authenticate your requests. The API key can be obtained by signing up for a developer account with Niobi.
 
 ## Setting up a Niobi Account
 
@@ -35,7 +40,7 @@ To access the Niobi Payments API, you need to create an account on our platform 
 
 <Steps>
  <Step title="Selecting environment">
-  1. Open your web browser and visit https://dev.niobi.co/register if you are just starting out integrating Niobi and want to connect with our sandbox environment.
+  1. Open your web browser and visit https://dev.niobi.co/register if you are just starting out integrating Niobi and want to connect with our sandbox environment. 
   2. When you have successfully integrated with our sandbox, and completed all compliance requirements (see below) you can use the link
    https://app.niobi.co/register for production environment.
  </Step>
@@ -56,21 +61,23 @@ To access the Niobi Payments API, you need to create an account on our platform 
   5. The invited team member will now receive an invitation to sign up.
  </Step>
  <Step title="Registering developer account">
-  1. The invited team member will now receive an invitation to sign up.
-  2.  The developer should sign up using the link provided in their email. 
- </Step>
- <Step title="Generating API Keys">
-   In the developer account Workspace, you will find an option to generate API keys. Click on the "API Keys" button. The API key generation process will provide you with a unique API key. This key serves as your authentication mechanism when making API requests. Make sure to securely store your API key and avoid sharing it publicly.
+  1.  The developer should sign up using the link provided in their email. 
+  2. Once the account has been created the user can navigate through the sidebar and interact with the dashboard to see a snapshot of the API activity, see transactions on the balance screen as well as generate API keys. 
  </Step>
  <Step title="Creating a new integration">
- Begin by creating your first integration by clicking the “Create Integration” button. We recommend creating one integration for each of the projects you are using the APIs with.
+ 1.  In the developer account Workspace, you will find an option to generate API keys. Click on the "API Keys" button.2.  Begin by creating your first integration by clicking the “Create Integration” button. We recommend creating one integration for each of the projects you are using the APIs with.
  </Step>
- <Step title="Creating credentials">
-  Within the Integration settings, the developer can generate the required credentials for the integration. These credentials typically consist of a Client ID and Secret Key. Make sure to save these credentials securely.
+  <Step title="Generating API Credentials">
+  1. Within the Integration settings, the developer can generate the required credentials for the integration. 
+  2. These credentials typically consist of a Client ID and Secret Key. Make sure to save these credentials securely.
+  3. This key serves as your authentication mechanism when making API requests. Make sure to securely store your API key and avoid sharing it publicly.
  </Step>
  <Step title="Using the credentials">
  You are now ready to integrate the Niobi Payments API into your application. Include the API key in the request headers as shown in the authentication section of this documentation.
  </Step>
 </Steps>
 
+Once you have followed these steps you can move to the next part of our documentation to understand how Niobi Payments work. 
+1. To integrate with Niobi to collect payments, click [here].(docs.niobi.co/collectingpayments) 
+2. To integrate with Niobi to make payments, click [here].(docs.niobi.co/makingpayments)
 
