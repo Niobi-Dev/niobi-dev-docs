@@ -1,44 +1,50 @@
 ---
 title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+description: 'Niobi has a set of APIs which allows you to authenticate to the platform, accept payments from using payment links, make payments and viewing you account balance in your Niobi wallet'
 ---
 
 <Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
+  If you're not looking to using our APIs but the platform itself, you can register at https://app.niobi.co/register to get started.
 </Note>
 
 ## Welcome
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
 
 <Card
-  title="Payments Endpoints"
+  title="Authentication"
   icon="money-bill"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
+  href="./payment/get-token"
 >
-  View the OpenAPI specification file
+  View API Reference
 </Card>
 
 <Card
-  title="Wallet"
+  title="Accept Payments"
   icon="wallet"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
+  href="./payment-link/"
 >
-  View the OpenAPI specification file
+  View API Reference
 </Card>
 
 <Card
-  title="Payment-link"
+  title="Make Payments"
   icon="link"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
+  href="./payment/niobi-unified-payment"
 >
-  View the OpenAPI specification file
+  View API Reference
+</Card>
+
+<Card
+  title="Account Balance"
+  icon="link"
+  href="./wallet/get-balance"
+>
+  View API Reference
 </Card>
 
 ## Authentication
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+All API endpoints except the authentication, are authenticated using Bearer tokens and picked up from the specification file.
 
 ```json
 "security": [
