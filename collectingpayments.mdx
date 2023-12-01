@@ -1,4 +1,67 @@
 ---
 title: Collecting Payments
-description: Learn how to utilize Niobi's API for collecting payments, including wallet management and fund top-ups.
+description: Niobi Payments provides versatile and secure methods for collecting payments from customers.
 ---
+
+### Supported Countries and Currencies
+
+Niobi's payment collection facility currently covers the following countries, with more on the horizon:
+
+- **Kenya**
+- **Rwanda** *(coming soon)*
+- **Uganda** *(coming soon)*
+- **Tanzania** *(coming soon)*
+
+In terms of currency support, Niobi supports multiple currencies, with more on the way:
+
+- **Kenyan Shillings (KES)**
+- **United States Dollars (USD)** *(collections are available through bank transfers, please refer to the Top Up section on the Niobi App for USD top up details)*
+
+### Collections in Kenya
+This documentation outlines the two primary methods available in KES via the API -  USSD push and payment links.
+
+**Accepted Payment Methods**
+1. Payment Collection through USSD Push
+2. Payment Collection via Payment Links
+
+#### Payment Collection through USSD Push
+
+USSD push is a convenient way to collect payments directly from a customer's mobile phone. This method is widely used due to its simplicity and accessibility, even on basic mobile devices.
+
+**How It Works:**
+
+- ***Initiate Request:*** Your system initiates a USSD push request to the customer’s mobile number.
+- ***Customer Authorization:*** The customer receives a prompt on their phone to authorize the payment.
+- ***Completion:*** Once the customer authorizes, the transaction is processed, and funds are transferred to your Niobi wallet.
+
+**Benefits:**
+
+- ***Accessibility:*** Works on all mobile phones.
+-  ***Security:*** Payments are secured with customer authorization.
+- ***Speed:*** Transactions are completed swiftly.
+
+
+#### Payment Collection via Payment Links
+Payment links are a flexible way to collect payments without the need for a physical point of sale or a complex integration.
+
+**How It Works:**
+- ***Create a Payment Link:*** Generate a unique payment link through your Niobi Payments dashboard.
+- ***Share the Link:*** Send this link to your customers via email, SMS, or any other communication platform.
+- ***Customer Payment:*** The customer clicks on the link, which takes them to a secure payment page where they can choose their preferred method of payment.
+- ***Receive Confirmation:*** Once the payment is completed, you receive a confirmation, and the funds are credited to your 
+Niobi wallet.
+
+***Supported Payment Methods on Payment Links:***
+- Credit/Debit Cards *(coming soon)*
+- Mobile Money
+
+**Benefits:**
+
+- ***Convenience:*** Easily shareable via any digital platform.
+- ***Flexibility:*** Accepts various payment methods.
+- ***Real-Time Tracking:*** Monitor payments in real-time.
+
+#### Getting Started
+To start collecting payments using these methods, ensure that your Niobi Payments account is set up and verified. Refer to the ‘Setting up a Niobi Account’ section in the [Getting Started](https://docs.niobi.co/quickstart) section for detailed steps on account creation and setup.
+
+For more detailed instructions on setting up USSD push and payment links, visit our [API Reference](https://docs.niobi.co/api-reference/introduction) section in the Niobi Payments documentation.
